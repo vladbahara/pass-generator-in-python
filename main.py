@@ -3,14 +3,11 @@ import random, time, os
 
 number = input() # Создаём переменную и помещаем в нее количество паролей для генерации
 
-passLen = input()
-
 passHistory = [] # Создаём пустой массив, в который потом поместим все наши пароли
 
 x = True # Создаём переменную для контроля нашего главного цикла
 
-if(passLen > 6):
-    
+
 
 while x:
     upperOne = chr(random.randint(65, 90))
@@ -40,4 +37,7 @@ with open('passwords.txt', 'w') as f:
     for item in passHistory:
         f.write("%s\n" % item)
 
-print('Numbers of genereted keys: ' + str(number) + '\nFirst key is - ' + passHistory[0] + '\nFile size is - ' + str(len("".join(passHistory))) + ' bytes')
+size = os.path.getsize('passwords.txt')
+print('----------------------------------------------------------')
+print('Num of keys: \t' + str(number) + '\n' + '\nFirst key : \t' + passHistory[0] + '\n' + '\nFilesize : \t' + str(size) + ' bytes or ' + str(round(size, 0)) + ' MB')
+print('----------------------------------------------------------')
