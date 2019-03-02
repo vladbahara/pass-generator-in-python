@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
 import random, time, os
+from hurry.filesize import size
 
-number = input() # Создаём переменную и помещаем в нее количество паролей для генерации
+print('----------------------------------------------------------')
+print('Before using delete file from previous session!')
+print('----------------------------------------------------------')
+
+number = input('Number of generated keys: ') # Создаём переменную и помещаем в нее количество паролей для генерации
 
 passHistory = [] # Создаём пустой массив, в который потом поместим все наши пароли
 
+
+
+
 x = True # Создаём переменную для контроля нашего главного цикла
-
-
 
 while x:
     upperOne = chr(random.randint(65, 90))
@@ -37,7 +43,8 @@ with open('passwords.txt', 'w') as f:
     for item in passHistory:
         f.write("%s\n" % item)
 
-size = os.path.getsize('passwords.txt')
+sizeFile = os.path.getsize('passwords.txt')
+
 print('----------------------------------------------------------')
-print('Num of keys: \t' + str(number) + '\n' + '\nFirst key : \t' + passHistory[0] + '\n' + '\nFilesize : \t' + str(size) + ' bytes or ' + str(round(size, 0)) + ' MB')
+print('Num of keys: \t' + str(number) + '\n' + '\nFirst key : \t' + passHistory[0] + '\n' + '\nFilesize : \t' + str(sizeFile) + ' bytes or ' + str(size(sizeFile)))
 print('----------------------------------------------------------')
