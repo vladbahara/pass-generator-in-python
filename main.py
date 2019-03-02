@@ -1,13 +1,17 @@
+# -*- coding: utf-8 -*-
 import random, time, os
 
-number = input()
+number = input() # Создаём переменную и помещаем в нее количество паролей для генерации
 
-passHistory = []
+passLen = input()
 
-x = True
+passHistory = [] # Создаём пустой массив, в который потом поместим все наши пароли
 
-os.mkdir('pass')
-os.chdir('pass')
+x = True # Создаём переменную для контроля нашего главного цикла
+
+if(passLen > 6):
+    
+
 while x:
     upperOne = chr(random.randint(65, 90))
     upperTwo = chr(random.randint(65, 90))
@@ -25,7 +29,7 @@ while x:
 
     #print(passHistory)
 
-    time.sleep(0.1)
+    #time.sleep(0.1)
 
     if (len("".join(passHistory)) == number * 6):
         x = False
@@ -36,5 +40,4 @@ with open('passwords.txt', 'w') as f:
     for item in passHistory:
         f.write("%s\n" % item)
 
-print('\nNumbers of genereted keys: ' + str(number))
-    
+print('Numbers of genereted keys: ' + str(number) + '\nFirst key is - ' + passHistory[0] + '\nFile size is - ' + str(len("".join(passHistory))) + ' bytes')
