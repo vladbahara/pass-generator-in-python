@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import random, time, os
+import random, time, os, datetime
 from hurry.filesize import size
 
 print('----------------------------------------------------------')
@@ -37,13 +37,14 @@ while x:
     if (len("".join(passHistory)) == number * 6):
         x = False
 
-os.mknod("passwords.txt")
+file_name = "passwords " + str(datetime.datetime.now().time()) + " .txt"
+os.mknod (file_name) 
 
-with open('passwords.txt', 'w') as f:
+with open(file_name, 'w') as f:
     for item in passHistory:
         f.write("%s\n" % item)
 
-sizeFile = os.path.getsize('passwords.txt')
+sizeFile = os.path.getsize(file_name)
 
 print('----------------------------------------------------------')
 print('Num of keys: \t' + str(number) + '\n' + '\nFirst key : \t' + passHistory[0] + '\n' + '\nFilesize : \t' + str(sizeFile) + ' bytes or ' + str(size(sizeFile)))
