@@ -3,35 +3,20 @@ import random, time, os, datetime
 from hurry.filesize import size
 
 number = input('Number of generated keys: ') # Создаём переменную и помещаем в нее количество паролей для генерации
+keySize = input('Size of generated keys: ')
 
 passHistory = [] # Создаём пустой массив, в который потом поместим все наши пароли
 
+for x in range(number):
 
+    passBuffer = []
 
+    for x in range(keySize):
+        charGenerator = chr(random.randint(33, 122))
+        passBuffer.append(charGenerator)
 
-x = True # Создаём переменную для контроля нашего главного цикла
-
-while x:
-    upperOne = chr(random.randint(65, 90))
-    upperTwo = chr(random.randint(65, 90))
-    lowerOne = chr(random.randint(97, 122))
-    lowerTwo = chr(random.randint(97, 122))
-    digitOne = chr(random.randint(48, 57))
-    digitTwo = chr(random.randint(48, 57))
-
-    passList = [upperOne, upperTwo, lowerOne, lowerTwo, digitOne, digitTwo]
-
-    random.shuffle(passList)
-
-    password1 = "".join(passList)
-    passHistory.append(password1)
-
-    #print(passHistory)
-
-    #time.sleep(0.1)
-
-    if (len("".join(passHistory)) == number * 6):
-        x = False
+    passBufferJoined = "".join(passBuffer)
+    passHistory.append(passBufferJoined)
 
 file_name = "passwords " + str(datetime.datetime.now().time()) + " .txt"
 os.mknod (file_name) 
