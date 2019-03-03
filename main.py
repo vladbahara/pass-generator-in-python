@@ -2,10 +2,6 @@
 import random, time, os, datetime
 from hurry.filesize import size
 
-print('----------------------------------------------------------')
-print('Before using delete file from previous session!')
-print('----------------------------------------------------------')
-
 number = input('Number of generated keys: ') # Создаём переменную и помещаем в нее количество паролей для генерации
 
 passHistory = [] # Создаём пустой массив, в который потом поместим все наши пароли
