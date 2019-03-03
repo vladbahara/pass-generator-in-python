@@ -2,31 +2,69 @@
 import random, time, os, datetime
 from hurry.filesize import size 
 
-number = input('Number of generated keys: ')
-keySize = input('Size of generated keys: ')
+###################################
 
-passHistory = []
+isRunning = True
 
-for x in range(number):
+while isRunning:
 
-    passBuffer = []
+    print('----------------------------------------------------------')
+    print('1. Сгенерировать новый сборник паролей.')
+    print('2. Сравнить два файла.')
+    print('...')
+    print('0. Выход')
+    print('----------------------------------------------------------')
 
-    for x in range(keySize):
-        charGenerator = chr(random.randint(33, 122))
-        passBuffer.append(charGenerator)
 
-    passBufferJoined = "".join(passBuffer)
-    passHistory.append(passBufferJoined)
+    generalInput = input()
 
-file_name = "passwords " + str(datetime.datetime.now().time()) + " .txt"
-os.mknod (file_name) 
+   
 
-with open(file_name, 'w') as f:
-    for item in passHistory:
-        f.write("%s\n" % item)
+    def passwordGenerator():
 
-sizeFile = os.path.getsize(file_name)
+        number = input('\nКоличество паролей: ')
+        keySize = input('Длина паролей: ')
 
-print('----------------------------------------------------------')
-print('Num of keys: \t' + str(number) + '\n' + '\nFirst key : \t' + passHistory[0] + '\n' + '\nFilesize : \t' + str(sizeFile) + ' bytes or ' + str(size(sizeFile)))
-print('----------------------------------------------------------')
+        passHistory = []
+
+        for x in range(number):
+
+            passBuffer = []
+
+            for x in range(keySize):
+                charGenerator = chr(random.randint(33, 122))
+                passBuffer.append(charGenerator)
+
+            passBufferJoined = "".join(passBuffer)
+            passHistory.append(passBufferJoined)
+
+        file_name = "passwords " + str(datetime.datetime.now().time()) + " .txt"
+        os.mknod (file_name) 
+
+        with open(file_name, 'w') as f:
+            for item in passHistory:
+                f.write("%s\n" % item)
+
+        sizeFile = os.path.getsize(file_name)
+
+        print('----------------------------------------------------------')
+        print('Количество паролей : \t\t' + str(number) + '\n' + '\nПервый пароль в файле : \t' + passHistory[0] + '\n' + '\nПримерный размер файла : \t' + str(sizeFile) + ' байт или ' + str(size(sizeFile)))
+        print('----------------------------------------------------------\n')
+        print('Пароли сохранены в папке со скриптом!\n')
+
+
+
+
+###################################
+ 
+    if generalInput == 0:
+
+        exit()
+
+    elif generalInput == 1:
+
+        passwordGenerator()
+
+    elif generalInput == 2:
+
+        print('2')
