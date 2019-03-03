@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 import random, time, os, datetime
-from hurry.filesize import size
+from hurry.filesize import size 
 
-number = input('Number of generated keys: ') # Создаём переменную и помещаем в нее количество паролей для генерации
+number = input('Number of generated keys: ')
 keySize = input('Size of generated keys: ')
 
-passHistory = [] # Создаём пустой массив, в который потом поместим все наши пароли
+passHistory = []
 
 for x in range(number):
 
